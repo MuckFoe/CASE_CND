@@ -10,15 +10,28 @@
 
     <entity class="com.example.demo.domain.Dummy">
         <table name="dummy"/>
-
         <attributes>
             <id name="id">
                 <column name="id"/>
                 <generated-value strategy="IDENTITY"/>
             </id>
-
             <basic name="value">
                 <column name="value"/>
+            </basic>
+        </attributes>
+    </entity>
+    <entity class="com.example.demo.domain.Event">
+        <table name="event"/>
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="name">
+                <column name="name"/>
+            </basic>
+            <basic name="description">
+                <column name="description"/>
             </basic>
         </attributes>
     </entity>

@@ -15,5 +15,17 @@
             </column>
         </createTable>
     </changeSet>
-
+    <changeSet id="event" author="Moritz Zeitler">
+        <createTable tableName="event">
+            <column name="id" type="bigserial" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
