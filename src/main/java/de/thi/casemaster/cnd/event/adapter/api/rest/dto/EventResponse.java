@@ -1,27 +1,22 @@
-package de.thi.casemaster.cnd.event.domain.model;
+package de.thi.casemaster.cnd.event.adapter.api.rest.dto;
 
-import lombok.AccessLevel;
+import de.thi.casemaster.cnd.event.domain.model.CalenderType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
-public class Event {
-    @Setter(AccessLevel.NONE)
+public class EventResponse {
     private UUID id;
     private String name;
     private String description;
-    private LocalDateTime startTime;
     private LocalDateTime endTime;
+    private LocalDateTime startTime;
     private String place;
     private String calenderName;
-
-    public Event() {
-        this.id = UUID.randomUUID();
-    }
-
 }
