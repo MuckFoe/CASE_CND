@@ -1,17 +1,17 @@
 package de.thi.casemaster.cnd.event.adapter.jpa.entities;
 
-import de.thi.casemaster.cnd.event.domain.model.CalenderType;
 import de.thi.casemaster.cnd.event.domain.model.Event;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
-@Entity
 @AllArgsConstructor
+@Document(collection = "event")
 public class EventEntity {
     @Id
     private String id;
