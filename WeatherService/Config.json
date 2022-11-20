@@ -1,0 +1,7 @@
+{
+    "mongodb_url": "mongodb://127.0.0.1",
+    "mongodb_port": "27017",
+    "standard_city": "Ingolstadt",
+    "application_port": 50505,
+    "weather_lease_time": 300
+}
