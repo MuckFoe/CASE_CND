@@ -46,7 +46,7 @@ public class MongoEventRepositoryImpl implements EventRepository {
         Iterable<EventEntity> all = mongoEventRepository.findAll();
         List<Event> events = new ArrayList<>();
         for (EventEntity eventEntity : all) {
-            if (eventEntity.getStartTime().getDayOfYear() == currentDay) {
+            if (eventEntity.getStartTime().getDayOfYear() <= currentDay && eventEntity.getEndTime().getDayOfYear() >= currentDay) {
                 events.add(eventEntity.toEvent());
             }
         }

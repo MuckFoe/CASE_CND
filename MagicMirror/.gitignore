@@ -4,8 +4,7 @@
 build
 
 # FmoreEnviornment
-/weather_service
-
+/magic_mirror
 # compiled output
 /dist
 /tmp
