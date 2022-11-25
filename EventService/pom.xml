@@ -3,15 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>de.thi.case.cnd</groupId>
-    <artifactId>hexagonal-architecture</artifactId>
+    <groupId>de.thi.casemaster.cnd.event</groupId>
+    <artifactId>EventService</artifactId>
     <version>1.0</version>
     <properties>
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
+        <start-class>de.thi.casemaster.cnd.event.EventServiceApplication</start-class>
     </properties>
-    <name>hexagonal-architecture</name>
-    <description>Project for hexagonal architecture in java</description>
+    <name>EventService</name>
+    <description>Project EventService based on hexagonal-architecture</description>
 
 
     <dependencies>
@@ -55,6 +56,17 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.7.5</version>
+                <configuration>
+                    <mainClass>de.thi.casemaster.cnd.event.EventServiceApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
