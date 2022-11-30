@@ -1,0 +1,11 @@
+spring:
+  main:
+    allow-circular-references: true
+  data:
+    mongodb:
+      authentication-database: admin
+      username: admin
+      password: admin
+      database: test_db
+      port: 27017
+      host: localhost

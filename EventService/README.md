@@ -3,23 +3,31 @@
 This API is used to save events and search for them. 
 
 ## Deployment
-
-### Native Deployment
-#### Prerequisits 
+## Native Deployment
+### Prerequisites  
 The machine running this API needs to have at least a JRE installed. A guide to install Java can be found [here](https://docs.oracle.com/goldengate/1212/gg-winux/GDRAD/java.htm#BGBFJHAB)
-
-O
 
 To persist data using this API a running MongoDB is needed. To install the MongoDB you can use a docker container or use the native installation guide [here](https://www.mongodb.com/docs/manual/installation/).
 
-After that you can run the application using the command `maven run shtin sthin`
 
+After that you can run the application using these commands: 
 
-### Relevant Articles:
+#### Windows:
 
-- [Clean Architecture with Spring Boot](https://www.baeldung.com/spring-boot-clean-architecture)
+`java -jar .\EventService-1.0.jar --spring.config.name=application --spring.config.location="C:\Path\to\this\folder\CASE_CND\EventService\config\"`
 
+#### Unix like:
 
+`java -jar .\EventService-1.0.jar --spring.config.name=application --spring.config.location="/Path/to/this/folder/CASE_CND/EventService/config/"`
 
-export M2_HOME="/Library/Java/mvn/apache-maven-3.8.6"
-PATH="${M2_HOME}/bin:${PATH}"
+The two parameters other than the fat-jar path, supply the folder path, where to find the config files for the application.
+A predefined file for this config can be found at 'EventService/config/spring.application.yml'. Keep in mind that you have to configure the MongoDB URL and Port. As of now it uses standard port on localhost: `localhost:27017`.
+
+If the MongoDB is running, and only if its running and the config for the MongoDB is correct, you can start the EventService using the command above.
+### Building the Application
+If you want to build the Application from scratch you have to install maven. A guide on how to do this can be found [here](https://maven.apache.org/install.html).
+
+Also the java version has to be version 15.
+
+With maven installed you can run 'mvn package' to build the application. This will produce a fat jar the holds all dependencies and can be started using the commands found in [Prerequisites](#prerequisites).
+
