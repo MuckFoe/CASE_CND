@@ -3,6 +3,9 @@
 *.egg-info
 build
 
+# vscode
+/.vscode
+
 # FmoreEnviornment
 /weather_service
 

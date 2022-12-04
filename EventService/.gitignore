@@ -28,6 +28,7 @@
 
 
 target/*
+/target/
 !target/EventService-1.0.jar
 pom.xml.tag
 pom.xml.releaseBackup
