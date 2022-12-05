@@ -6,15 +6,18 @@ LABEL Maintainer="moritz.zeitler"
 
 
 # Chose the workin directory
-WORKDIR /usr/WeatherService/src
+WORKDIR /usr/caseweatherservice/src
 
-#to COPY the remote file at working directory in container
-COPY ./* ./
-# Now the structure looks like this '/usr/app/src/test.py'
+# Copy necessary files for WeatherService
+COPY ./__main__.py ./
+COPY ./JsonConfigReader.py ./
+COPY ./Utils.py ./
+COPY ./WeatherProvider.py ./
+COPY ./Config.json ./
 
+# Upgrade pip and install flask
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir requests elasticsearch==6.8.2 pandas
+    pip install --no-cache-dir flask requests
 
-#CMD instruction should be used to run the software
-#contained by your image, along with any arguments.
+# Run the python main function to start CaseWeatherService
 CMD [ "python", "./__main__.py"]
