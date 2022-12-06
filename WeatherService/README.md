@@ -1,8 +1,28 @@
 # WeatherService
 
 
-### Run natively
-To run the WeatherService natively 
+### Run Native
+
+To run the WeatherService natively you need to have python installed.
+
+This can be established using the guide [here](https://realpython.com/installing-python/)
+
+After that we will create a virtual environment. A guide can be found [here](https://www.freecodecamp.org/news/how-to-setup-virtual-environments-in-python/)
+
+With the virtual environment activated (see the guide above) all dependencies of the WeatherService can be installed using:
+
+`pip install -r requirements.txt`
+
+The service itself needs to environment variables:
+ * `CONFIG_PATH_WEATHER_SERVICE`, the path to the config file (an example is in the main directory of the WeatherService)
+ * `OPEN_WEATHER_API_KEY`, in which an api key for [openweathermap](https://openweathermap.org/)
+
+Such variables can be set using this [guide](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html)
+To finally start the service run:
+
+`python __main__.py`
+
+This will start the internal flask server which answers all incoming calls.
 ### Run with Docker
 To run the WeatherService using Docker you first need to build the container using following command from the WeatherService directory:
 

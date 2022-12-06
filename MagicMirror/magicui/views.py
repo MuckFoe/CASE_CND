@@ -1,14 +1,21 @@
 import requests
 import json
 
+from requests.exceptions import ConnectionError
+
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
+from django.conf import settings
 
 
 def index(request):
-    todays_events_list = requests.get(
-        'http://localhost:8080/api/events/today').json()
+    try:
+        todays_events_list = requests.get(
+            settings.EVENT_SERVICE_BASE_PATH + 'events/today').json()
+    except ConnectionError as e:
+        todays_events_list = []
+        print(str(e))
     context = {
         'todays_events_list': todays_events_list
     }
@@ -16,16 +23,33 @@ def index(request):
 
 
 def detail(request, event_id):
-    event = requests.get(
-        'http://localhost:8080/api/events/{}'.format(event_id)).json()
-    calender = requests.get('http://localhost:8080/api/calendertype/name={}'.format(event['calenderName'])).json()
-    context = {
-        'event_name': event['name'],
-        'event_start_time': event['startTime'],
-        'event_end_time': event['endTime'],
-        'event_place': event['place'],
-        'event_calender_name': event['calenderName'],
-        'event_description': event['place'],
-        'calender_color' : calender['hexColor']
-    }
+    event = None
+    try:
+        event = requests.get(
+            settings.EVENT_SERVICE_BASE_PATH + 'events/{}'.format(event_id)).json()
+        calender = requests.get(
+            settings.EVENT_SERVICE_BASE_PATH + 'calendertype/name={}'.format(event['calenderName'])).json()
+    except ConnectionError as e:
+
+        print(str(e))
+    if event:
+        context = {
+            'event_name': event['name'],
+            'event_start_time': event['startTime'],
+            'event_end_time': event['endTime'],
+            'event_place': event['place'],
+            'event_calender_name': event['calenderName'],
+            'event_description': event['place'],
+            'calender_color': calender['hexColor']
+        }
+    else:
+        context = {
+            'event_name': None,
+            'event_start_time': None,
+            'event_end_time': None,
+            'event_place': None,
+            'event_calender_name': None,
+            'event_description': None,
+            'calender_color': None
+        }
     return render(request, 'detail.html', context)
