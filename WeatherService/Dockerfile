@@ -20,4 +20,4 @@ RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir flask requests
 
 # Run the python main function to start CaseWeatherService
-CMD [ "python", "./__main__.py"]
+CMD [ "flask", "run"]

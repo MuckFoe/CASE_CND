@@ -20,3 +20,14 @@ Finally the MagicMirror can be run using the following command
 !Attention to actually access the web ui, the EventService needs to be running to display data
 
 When startup is done you should be able to visit the website [here](http://127.0.0.1:8000/magicui)
+
+### Run with Docker
+To run the WeatherService using Docker you first need to build the container using following command from the WeatherService directory:
+
+`docker build -t magicmirror ./`
+
+Afterwards you can run the service using the following command:
+
+`docker run -d -p 8000:8000 --name magicmirror magicmirror`
+
+The two environment variables are used for the config file as well as the open weather api key.
