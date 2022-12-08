@@ -121,3 +121,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # EventService config
 
 EVENT_SERVICE_BASE_PATH = 'http://localhost:8080/api/'
+
+# WeatherService config
+
+WEATHER_SERVICE_BASE_PATH = 'http://localhost:50505/api/'

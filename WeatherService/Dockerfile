@@ -1,9 +1,7 @@
 FROM python:3.6
 
-
 #Labels as key value pair
 LABEL Maintainer="moritz.zeitler"
-
 
 # Chose the workin directory
 WORKDIR /usr/caseweatherservice/src

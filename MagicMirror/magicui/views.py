@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 
 from requests.exceptions import ConnectionError
 
@@ -26,9 +27,9 @@ def detail(request, event_id):
     event = None
     try:
         event = requests.get(
-            settings.EVENT_SERVICE_BASE_PATH + 'events/{}'.format(event_id)).json()
+            os.getenv('OPEN_WEATHER_API_KEY') + '/api/events/{}'.format(event_id)).json()
         calender = requests.get(
-            settings.EVENT_SERVICE_BASE_PATH + 'calendertype/name={}'.format(event['calenderName'])).json()
+            os.getenv('OPEN_WEATHER_API_KEY') + '/api/calendertype/name={}'.format(event['calenderName'])).json()
     except ConnectionError as e:
 
         print(str(e))

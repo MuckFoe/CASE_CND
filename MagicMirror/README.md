@@ -13,13 +13,20 @@ With the virtual environment activated (see the guide above) all dependencies of
 
 `pip install -r requirements.txt`
 
-Finally the MagicMirror can be run using the following command
-
-`python manage.py runserver`
-
 !Attention to actually access the web ui, the EventService needs to be running to display data
 
 When startup is done you should be able to visit the website [here](http://127.0.0.1:8000/magicui)
+
+Configuration wise settings can be updated under `./magicmirror/settings.py`. 
+
+Most importantly the connection strings to the local or not local EventService and WeatherService, which are specified by the value `EVENT_SERVICE_BASE_PATH` and `WEATHER_SERVICE_BASE_PATH` respectively, need to be set. Both of them are environment variables.
+
+Such variables can be set using this [guide](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html)
+
+
+Finally the MagicMirror can be run using the following command
+
+`python manage.py runserver`
 
 ### Run with Docker
 To run the WeatherService using Docker you first need to build the container using following command from the WeatherService directory:
@@ -28,6 +35,6 @@ To run the WeatherService using Docker you first need to build the container usi
 
 Afterwards you can run the service using the following command:
 
-`docker run -d -p 8000:8000 --name magicmirror magicmirror`
+`docker run -d -p 8000:8000 --name magicmirror -e EVENT_SERVICE_BASE_PATH="http://eventservice:8000" -e WEATHER_SERVICE_BASE_PATH="http://weatherservice:50505" magicmirror`
 
-The two environment variables are used for the config file as well as the open weather api key.
+The standard config is build to run within the docker context so it shouldn't be necessary to change it.

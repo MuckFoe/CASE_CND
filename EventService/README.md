@@ -3,7 +3,7 @@
 This API is used to save events and search for them. 
 
 ## Deployment
-## Native Deployment
+## Run Native
 ### Prerequisites  
 The machine running this API needs to have at least a JRE installed. A guide to install Java can be found [here](https://docs.oracle.com/goldengate/1212/gg-winux/GDRAD/java.htm#BGBFJHAB)
 
@@ -30,4 +30,13 @@ If you want to build the Application from scratch you have to install maven. A g
 Also the java version has to be version 15.
 
 With maven installed you can run 'mvn package' to build the application. This will produce a fat jar the holds all dependencies and can be started using the commands found in [Prerequisites](#prerequisites).
+## Run with Docker
+To run the WeatherService using Docker you first need to build the container using following command from the WeatherService directory:
 
+`docker build -t caseeventservice ./`
+
+Afterwards you can run the service using the following command:
+
+`docker run -d -p 8080:8080 --name caseeventservice caseeventservice`
+
+The standard config is build to run within the docker context so it shouldn't be necessary to change it.
