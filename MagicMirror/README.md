@@ -35,6 +35,6 @@ To run the WeatherService using Docker you first need to build the container usi
 
 Afterwards you can run the service using the following command:
 
-`docker run -d -p 8000:8000 --name magicmirror -e EVENT_SERVICE_BASE_PATH="http://eventservice:8000" -e WEATHER_SERVICE_BASE_PATH="http://weatherservice:50505" magicmirror`
+`docker run -d -p 8000:8000 --name casemagicmirror -e DJANGO_SETTINGS_MODULE="magicmirror.settings" --network=case magicmirror`
 
 The standard config is build to run within the docker context so it shouldn't be necessary to change it.

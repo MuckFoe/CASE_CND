@@ -1,0 +1,62 @@
+version: "3.5"
+
+services:
+  mongo:
+    image: mongo
+    container_name: casemongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - 27017:27017
+    networks:
+      - case
+    volumes:
+      - type: volume
+        source: MONGO_DATA
+        target: /data/db
+      - type: volume
+        source: MONGO_CONFIG
+        target: /data/configdb
+  eventservice:
+    image: caseeventservice
+    container_name: caseeventservice
+    ports:
+      - 8080:8080
+    networks:
+      - case
+    depends_on:
+      - mongo
+  magicmirror:
+    image: magicmirror
+    container_name: casemagicmirror
+    environment:
+      DJANGO_SETTINGS_MODULE: magicmirror.settings
+    ports:
+      - 8000:8000
+    networks:
+      - case
+    depends_on:
+      - eventservice
+      - weatherservice
+  weatherservice:
+    image: caseweatherservice
+    container_name: caseweatherservice
+    ports:
+      - 50505:50505
+    environment:
+      CONFIG_PATH_WEATHER_SERVICE: /usr/caseweatherservice/src/Config.json
+      OPEN_WEATHER_API_KEY: 33fb8669eeb73b0dc059241b8452cdbe
+    networks:
+      - case
+
+networks:
+  case:
+    driver: bridge
+
+
+volumes:
+  MONGO_DATA:
+    name: MONGO_DATA
+  MONGO_CONFIG:
+    name: MONGO_CONFIG

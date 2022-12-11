@@ -9,6 +9,9 @@ The machine running this API needs to have at least a JRE installed. A guide to 
 
 To persist data using this API a running MongoDB is needed. To install the MongoDB you can use a docker container or use the native installation guide [here](https://www.mongodb.com/docs/manual/installation/).
 
+Alternatively you can start your MongoDB with docker using this command:
+
+`docker run --name casemongo --network case -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin -d mongo`
 
 After that you can run the application using these commands: 
 
@@ -37,6 +40,6 @@ To run the WeatherService using Docker you first need to build the container usi
 
 Afterwards you can run the service using the following command:
 
-`docker run -d -p 8080:8080 --name caseeventservice caseeventservice`
+`docker run -d -p 8080:8080 --name caseeventservice --network=case caseeventservice`
 
 The standard config is build to run within the docker context so it shouldn't be necessary to change it.

@@ -15,7 +15,7 @@ With the virtual environment activated (see the guide above) all dependencies of
 
 The service itself needs to environment variables:
  * `CONFIG_PATH_WEATHER_SERVICE`, the path to the config file (an example is in the main directory of the WeatherService)
- * `OPEN_WEATHER_API_KEY`, in which an api key for [openweathermap](https://openweathermap.org/)
+ * `OPEN_WEATHER_API_KEY`, storse api key for [openweathermap](https://openweathermap.org/)
 
 Such variables can be set using this [guide](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html)
 To finally start the service run:
@@ -30,6 +30,6 @@ To run the WeatherService using Docker you first need to build the container usi
 
 Afterwards you can run the service using the following command:
 
-`docker run -d -p 50505:50505 --name caseweatherservice -e CONFIG_PATH_WEATHER_SERVICE="/usr/caseweatherservice/src/Config.json" -e OPEN_WEATHER_API_KEY="" caseweatherservice`
+`docker run -d -p 50505:50505 --name caseweatherservice -e CONFIG_PATH_WEATHER_SERVICE="/usr/caseweatherservice/src/Config.json" -e OPEN_WEATHER_API_KEY="" --network=case caseweatherservice`
 
 The two environment variables are used for the config file as well as the open weather api key.

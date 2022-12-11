@@ -7,3 +7,9 @@
 {% else %}
     <p>No events are available.</p>
 {% endif %}
+
+{% if weather_data %}
+    <pre>{{ weather_data | linebreaks }}</pre>
+{% else %}
+    <p>No weather available.</p>
+{% endif %}

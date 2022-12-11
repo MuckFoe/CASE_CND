@@ -1,5 +1,5 @@
 # Base Image
-FROM anapsix/alpine-java
+FROM eclipse-temurin:18
 
 # Labels as key value pair
 LABEL Maintainer="moritz.zeitler"
@@ -15,4 +15,4 @@ COPY ./target/EventService-1.0.jar ./EventService-1.0.jar
 COPY ./src/main/resources/application.yml ./config/
 
 # Start Java Application and provide path to config files
-CMD ["java","-jar","EventService-1.0.jar", "--spring.config.name=application",  "--spring.config.location=‘//usr/caseeventservice/src/config'"]
+CMD ["java","-jar","EventService-1.0.jar", "--spring.config.name=application",  "--spring.config.location=/usr/caseeventservice/src/config/"]
