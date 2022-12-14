@@ -31,10 +31,10 @@ Finally the MagicMirror can be run using the following command
 ### Run with Docker
 To run the WeatherService using Docker you first need to build the container using following command from the WeatherService directory:
 
-`docker build -t magicmirror ./`
+`docker build -t case-magicmirror ./`
 
 Afterwards you can run the service using the following command:
 
-`docker run -d -p 8000:8000 --name casemagicmirror -e DJANGO_SETTINGS_MODULE="magicmirror.settings" --network=case magicmirror`
+`docker run -d -p 8000:8000 --name case-magicmirror -e DJANGO_SETTINGS_MODULE="magicmirror.settings" --network=case case-magicmirror`
 
 The standard config is build to run within the docker context so it shouldn't be necessary to change it.

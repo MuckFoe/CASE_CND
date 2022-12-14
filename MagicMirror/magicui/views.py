@@ -16,7 +16,7 @@ def index(request):
             settings.EVENT_SERVICE_BASE_PATH + 'events/today').json()
         weather_data = requests.get(
             settings.WEATHER_SERVICE_BASE_PATH + 'weather').json()
-    except ConnectionError as e:
+    except Exception as e:
         todays_events_list = []
         print(str(e))
     context = {

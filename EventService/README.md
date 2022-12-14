@@ -36,10 +36,10 @@ With maven installed you can run 'mvn package' to build the application. This wi
 ## Run with Docker
 To run the WeatherService using Docker you first need to build the container using following command from the WeatherService directory:
 
-`docker build -t caseeventservice ./`
+`docker build -t case-eventservice ./`
 
 Afterwards you can run the service using the following command:
 
-`docker run -d -p 8080:8080 --name caseeventservice --network=case caseeventservice`
+`docker run -d -p 8080:8080 --name case-eventservice --network=case case-eventservice`
 
 The standard config is build to run within the docker context so it shouldn't be necessary to change it.

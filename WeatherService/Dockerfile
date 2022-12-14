@@ -7,7 +7,7 @@ LABEL Maintainer="moritz.zeitler"
 WORKDIR /usr/caseweatherservice/src
 
 # Copy necessary files for WeatherService
-COPY ./__main__.py ./
+COPY ./WeatherService.py ./
 COPY ./JsonConfigReader.py ./
 COPY ./Utils.py ./
 COPY ./WeatherProvider.py ./

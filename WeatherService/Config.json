@@ -1,5 +1,4 @@
 {
     "standard_city": "Ingolstadt",
-    "application_port": 50505,
     "weather_lease_time": 300
 }

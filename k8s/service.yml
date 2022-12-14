@@ -14,3 +14,53 @@ spec:
   selector:
     app: magicmirror
   type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: caseeventservice
+  labels:
+    app: caseeventservice
+
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: caseeventservice
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: caseweatherservice
+  labels:
+    app: caseweatherservice
+
+spec:
+  ports:
+    - port: 50505
+      protocol: TCP
+      targetPort: 50505
+  selector:
+    app: caseweatherservice
+  type: ClusterIP
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "mongo-db"
+  namespace: "development"
+  labels:
+    app: "mongo-db"
+spec:
+  ports:
+    - name: "mongodb"
+      port: 27017
+      nodePort: 27017
+  type: "NodePort"
+  selector:
+    app: "mongo-db"

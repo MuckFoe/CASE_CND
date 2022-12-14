@@ -24,5 +24,4 @@ def weather_request():
 
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0',
-            port=config_reader.get_config_value('application_port'))
+    app.run(debug=False, host='0.0.0.0')

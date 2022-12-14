@@ -7,8 +7,6 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin
-    ports:
-      - 27017:27017
     networks:
       - case
     volumes:
@@ -28,7 +26,7 @@ services:
     depends_on:
       - mongo
   magicmirror:
-    image: magicmirror
+    image: casemagicmirror
     container_name: casemagicmirror
     environment:
       DJANGO_SETTINGS_MODULE: magicmirror.settings
@@ -47,13 +45,15 @@ services:
     environment:
       CONFIG_PATH_WEATHER_SERVICE: /usr/caseweatherservice/src/Config.json
       OPEN_WEATHER_API_KEY: 33fb8669eeb73b0dc059241b8452cdbe
+      FLASK_APP: WeatherService
+      FLASK_RUN_PORT: 50505
+      FLASK_RUN_HOST: 0.0.0.0
     networks:
       - case
 
 networks:
   case:
     driver: bridge
-
 
 volumes:
   MONGO_DATA:
