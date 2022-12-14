@@ -11,7 +11,7 @@ To persist data using this API a running MongoDB is needed. To install the Mongo
 
 Alternatively you can start your MongoDB with docker using this command:
 
-`docker run --name casemongo --network case -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin -d mongo`
+`docker run --name casemongo --network case -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin -d mongo`
 
 After that you can run the application using these commands: 
 
@@ -36,10 +36,10 @@ With maven installed you can run 'mvn package' to build the application. This wi
 ## Run with Docker
 To run the WeatherService using Docker you first need to build the container using following command from the WeatherService directory:
 
-`docker build -t case-eventservice ./`
+`docker build -t caseeventservice ./`
 
 Afterwards you can run the service using the following command:
 
-`docker run -d -p 8080:8080 --name case-eventservice --network=case case-eventservice`
+`docker run -d -p 8080:8080 --name caseeventservice --network=case caseeventservice`
 
 The standard config is build to run within the docker context so it shouldn't be necessary to change it.

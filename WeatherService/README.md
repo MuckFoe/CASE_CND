@@ -29,10 +29,10 @@ This will start the internal flask server which answers all incoming calls.
 ### Run with Docker
 To run the WeatherService using Docker you first need to build the container using following command from the WeatherService directory:
 
-`docker build -t case-weatherservice ./`
+`docker build -t caseweatherservice ./`
 
 Afterwards you can run the service using the following command:
 
-`docker run -d -p 50505:50505 --name case-weatherservice -e CONFIG_PATH_WEATHER_SERVICE="/usr/caseweatherservice/src/Config.json" -e OPEN_WEATHER_API_KEY=""  -e FLASK_APP="WeatherService" -e FLASK_RUN_PORT="50505" -e FLASK_RUN_HOST="0.0.0.0" --network=case case-weatherservice`
+`docker run -d -p 50505:50505 --name caseweatherservice -e CONFIG_PATH_WEATHER_SERVICE="/usr/caseweatherservice/src/Config.json" -e OPEN_WEATHER_API_KEY=""  -e FLASK_APP="WeatherService" -e FLASK_RUN_PORT="50505" -e FLASK_RUN_HOST="0.0.0.0" --network=case caseweatherservice`
 
 The two environment variables are used for the config file as well as the open weather api key.
