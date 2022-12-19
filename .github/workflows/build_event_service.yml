@@ -32,6 +32,6 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file ./pom.xml
     - name: Build EventService Docker image
-      run: docker build . --file ./Dockerfile --tag caseeventservice
+      run: docker build . --file ./Dockerfile --tag moritzzeitler/case:caseeventservice
     - name: Push Docker Image to docker hub
       run: docker push moritzzeitler/case:caseeventservice
