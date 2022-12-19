@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Build EventService Jar
+name: Build EventService 
 
 on:
   push:
@@ -29,7 +29,7 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file ./EventService/pom.xml
-    - uses: actions/upload-artifact@v3
-      with:
-        name: Package
-        path: ./EventService/target/
+    - name: Build EventService Docker image
+      run: docker build . --file ./EventService/Dockerfile --tag caseeventservice
+    - name: Push Docker Image to docker hub
+      run: docker push moritzzeitler/case:caseeventservice
