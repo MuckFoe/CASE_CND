@@ -1,17 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-    name: demo-ingress
+  name: caseweatherservice-ingress
 spec:
-    ingressClassName: nginx
-    rules:
-      - host: localhost
-        http:
-          paths:
-            - backend:
-                service:
-                  name: demo
-                  port:
-                    number: 3000
-              path: /
-              pathType: Prefix
+  ingressClassName: nginx
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - backend:
+              service:
+                name: caseweatherservice
+                port:
+                  number: 50505
+            path: /weather
+            pathType: Prefix

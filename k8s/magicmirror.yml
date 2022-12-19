@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: casemagicmirror
+  labels:
+    app: casemagicmirror
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: casemagicmirror
+  template:
+    metadata:
+      labels:
+        app: casemagicmirror
+    spec:
+      containers:
+        - name: casemagicmirror
+          image: moritzzeitler/case:casemagicmirror
+          ports:
+            - containerPort: 8000
+          resources:
+            limits:
+              memory: "200Mi"
+              cpu: "100m"
+          env:
+            - name: DJANGO_SETTINGS_MODULE
+              valueFrom:
+                configMapKeyRef:
+                  name: case-config
+                  key: DJANGO_SETTINGS_MODULE
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: casemagicmirror
+  labels:
+    app: casemagicmirror
+spec:
+  selector:
+    app: casemagicmirror
+  ports:
+    - port: 8000
+      protocol: TCP
+      targetPort: 8000
+  type: ClusterIP

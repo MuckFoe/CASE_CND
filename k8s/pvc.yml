@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: mongodb-pvc
   labels:
-    app: mongo-db
+    app: mongo
 spec:
   accessModes:
     - ReadWriteOnce

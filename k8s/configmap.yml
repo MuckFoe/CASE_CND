@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: case-config
+data:
+  CONFIG_PATH_WEATHER_SERVICE: /usr/caseweatherservice/src/Config.json
+  OPEN_WEATHER_API_KEY: 33fb8669eeb73b0dc059241b8452cdbe
+  FLASK_APP: WeatherService
+  FLASK_RUN_PORT: "50505"
+  FLASK_RUN_HOST: 0.0.0.0
+  DJANGO_SETTINGS_MODULE: magicmirror.settings

@@ -49,18 +49,17 @@ spec:
     app: caseweatherservice
   type: ClusterIP
 ---
-apiVersion: "v1"
-kind: "Service"
+apiVersion: v1
+kind: Service
 metadata:
-  name: "mongo-db"
-  namespace: "development"
+  name: mongo-db
   labels:
-    app: "mongo-db"
+    app: mongo-db
 spec:
   ports:
-    - name: "mongodb"
+    - name: mongodb
       port: 27017
       nodePort: 27017
-  type: "NodePort"
+  type: NodePort
   selector:
-    app: "mongo-db"
+    app: mongo-db
