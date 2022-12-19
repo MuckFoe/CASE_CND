@@ -18,7 +18,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./EventService
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 18
@@ -27,8 +29,6 @@ jobs:
         java-version: '18'
         distribution: 'temurin'
         cache: maven
-    - name: Move into EventService dir
-      run: cd EventService
     - name: Build with Maven
       run: mvn -B package --file .pom.xml
     - name: Build EventService Docker image
