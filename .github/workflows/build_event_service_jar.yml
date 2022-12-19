@@ -29,8 +29,6 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file ./EventService/pom.xml
-    - name: Copy jar
-      run: mkdir -p ./EventService/target/ && cp ./EventService/target/*.jar ./EventService/target/
     - uses: actions/upload-artifact@v3
       with:
         name: Package
