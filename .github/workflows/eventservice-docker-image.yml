@@ -15,5 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build EventService Docker image
-      run: docker build . --file ./EventService/Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file ./EventService/Dockerfile --tag caseeventservice
+    - name: Push Docker Image to docker hub
+      run: docker push moritzzeitler/case:caseeventservice
       
