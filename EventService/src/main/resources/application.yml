@@ -4,8 +4,8 @@ spring:
   data:
     mongodb:
       authentication-database: admin
-      username: YWRtaW4=
-      password: YWRtaW4=
+      username: admin
+      password: admin
       database: test_db
       port: 27017
       host: casemongo
