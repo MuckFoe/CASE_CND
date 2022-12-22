@@ -8,10 +8,24 @@ spec:
     - host: localhost
       http:
         paths:
-          - backend:
+          - path: /magicui
+            pathType: Prefix
+            backend:
+              service:
+                name: casemagicmirror
+                port:
+                  number: 8000
+          - path: /api/events
+            pathType: Prefix
+            backend:
+              service:
+                name: caseeventservice
+                port:
+                  number: 8080
+          - path: /weather
+            pathType: Prefix
+            backend:
               service:
                 name: caseweatherservice
                 port:
                   number: 50505
-            path: /weather
-            pathType: Prefix
