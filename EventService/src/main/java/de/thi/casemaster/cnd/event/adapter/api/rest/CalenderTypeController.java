@@ -2,20 +2,15 @@ package de.thi.casemaster.cnd.event.adapter.api.rest;
 
 import de.thi.casemaster.cnd.event.adapter.api.rest.dto.CalenderTypeResponse;
 import de.thi.casemaster.cnd.event.adapter.api.rest.dto.CreateCalenderTypeRequest;
-import de.thi.casemaster.cnd.event.adapter.api.rest.dto.EventResponse;
 import de.thi.casemaster.cnd.event.domain.CalenderTypeService;
-import de.thi.casemaster.cnd.event.domain.EventService;
 import de.thi.casemaster.cnd.event.domain.model.CalenderType;
-import de.thi.casemaster.cnd.event.domain.model.Event;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/calendertype")

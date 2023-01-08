@@ -1,6 +1,6 @@
 package de.thi.casemaster.cnd.event.adapter.api.rest;
 
-import de.thi.casemaster.cnd.event.adapter.api.rest.dto.EventResponse;
+import de.thi.casemaster.cnd.event.adapter.api.rest.dto.CreateEventResponse;
 import de.thi.casemaster.cnd.event.domain.model.Event;
 import de.thi.casemaster.cnd.event.domain.EventService;
 import org.slf4j.Logger;
@@ -22,31 +22,31 @@ public class EventController {
     Logger logger = LoggerFactory.getLogger(EventController.class);
 
     @PostMapping
-    public EventResponse createEvent(@RequestBody Event event) {
+    public CreateEventResponse createEvent(@RequestBody Event event) {
         logger.info(LocalDateTime.now().toString());
         return eventService.insert(event.getName(), event.getDescription(), event.getStartTime(), event.getEndTime(), event.getPlace(), event.getCalenderName()).toEventResponse();
     }
 
     @GetMapping("/{eventId}")
-    public EventResponse findEvent(@PathVariable String eventId) {
+    public CreateEventResponse findEvent(@PathVariable String eventId) {
         Event event = eventService.findEvent(UUID.fromString(eventId));
         return event.toEventResponse();
     }
 
     @GetMapping("/today")
-    public List<EventResponse> findEventsByStartTime() {
+    public List<CreateEventResponse> findEventsByStartTime() {
         List<Event> list = eventService.getEventsToday();
         return createEventResponseList(list);
     }
 
     @GetMapping
-    public List<EventResponse> findAllEvents() {
+    public List<CreateEventResponse> findAllEvents() {
         List<Event> list = eventService.findAll();
         return createEventResponseList(list);
     }
 
-    private List<EventResponse> createEventResponseList(List<Event> inputEvents) {
-        List<EventResponse> outputEventList = new ArrayList<>();
+    private List<CreateEventResponse> createEventResponseList(List<Event> inputEvents) {
+        List<CreateEventResponse> outputEventList = new ArrayList<>();
         for (Event event : inputEvents) {
             outputEventList.add(event.toEventResponse());
         }

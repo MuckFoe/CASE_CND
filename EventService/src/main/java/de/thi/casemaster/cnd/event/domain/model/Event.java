@@ -1,6 +1,6 @@
 package de.thi.casemaster.cnd.event.domain.model;
 
-import de.thi.casemaster.cnd.event.adapter.api.rest.dto.EventResponse;
+import de.thi.casemaster.cnd.event.adapter.api.rest.dto.CreateEventResponse;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,17 +25,17 @@ public class Event {
         this.id = UUID.randomUUID();
     }
 
-    public EventResponse toEventResponse() {
-        EventResponse eventResponse = new EventResponse();
-        eventResponse.setName(this.name);
-        eventResponse.setDescription(this.description);
-        eventResponse.setCalenderName(this.calenderName);
-        eventResponse.setEndTime(this.endTime);
-        eventResponse.setStartTime(this.startTime);
-        eventResponse.setPlace(this.place);
-        eventResponse.setId(this.id);
-        eventResponse.setCalenderName(this.calenderName);
-        return eventResponse;
+    public CreateEventResponse toEventResponse() {
+        CreateEventResponse createEventResponse = new CreateEventResponse();
+        createEventResponse.setName(this.name);
+        createEventResponse.setDescription(this.description);
+        createEventResponse.setCalenderName(this.calenderName);
+        createEventResponse.setEndTime(this.endTime);
+        createEventResponse.setStartTime(this.startTime);
+        createEventResponse.setPlace(this.place);
+        createEventResponse.setId(this.id);
+        createEventResponse.setCalenderName(this.calenderName);
+        return createEventResponse;
     }
 
 }

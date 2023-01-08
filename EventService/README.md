@@ -11,7 +11,9 @@ To persist data using this API a running MongoDB is needed. To install the Mongo
 
 Alternatively you can start your MongoDB with docker using this command:
 
-`docker run --name casemongo --network case -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin -d mongo`
+`docker run --name casemongo --network case -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin -d mongo:5.0.14`
+
+If you're aren't starting the EventService as a container u have to add `-p 27017:27017` to the docker run command. Also you have to change the EventService config file.
 
 After that you can run the application using these commands: 
 

@@ -2,13 +2,19 @@ version: "3.5"
 
 services:
   mongo:
-    image: mongo
+    image: mongo:5.0.14
     container_name: casemongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin
     networks:
       - case
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/test --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
     volumes:
       - type: volume
         source: MONGO_DATA
@@ -17,31 +23,36 @@ services:
         source: MONGO_CONFIG
         target: /data/configdb
   eventservice:
-    image: caseeventservice
+    image: moritzzeitler/case:caseeventservice
     container_name: caseeventservice
-    ports:
-      - 8080:8080
     networks:
       - case
     depends_on:
       - mongo
   magicmirror:
-    image: casemagicmirror
+    image: moritzzeitler/case:casemagicmirror
     container_name: casemagicmirror
     environment:
       DJANGO_SETTINGS_MODULE: magicmirror.settings
-    ports:
-      - 8000:8000
     networks:
       - case
     depends_on:
       - eventservice
       - weatherservice
-  weatherservice:
-    image: caseweatherservice
-    container_name: caseweatherservice
+  proxy:
+    image: nginx:1.21
+    container_name: caseproxy
     ports:
-      - 50505:50505
+      - "12345:80"
+    volumes:
+      - "./nginx.conf:/etc/nginx/nginx.conf"
+    networks:
+      - case
+    depends_on:
+      - magicmirror
+  weatherservice:
+    image: moritzzeitler/case:caseweatherservice
+    container_name: caseweatherservice
     environment:
       CONFIG_PATH_WEATHER_SERVICE: /usr/caseweatherservice/src/Config.json
       OPEN_WEATHER_API_KEY: 33fb8669eeb73b0dc059241b8452cdbe
@@ -50,7 +61,6 @@ services:
       FLASK_RUN_HOST: 0.0.0.0
     networks:
       - case
-
 networks:
   case:
     driver: bridge
