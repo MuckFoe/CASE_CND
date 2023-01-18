@@ -19,7 +19,7 @@ After those prerequisites are met you can run the application using:
 
 And:
 
-`kubectl apply -f .k8s/applications`
+`kubectl apply -f ./k8s/`
 
 
 ## Usage
