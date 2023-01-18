@@ -42,7 +42,3 @@ For the weather service to work you need to supply a working api key from [openw
 
 ### In case of `kubernetes`:
 The paths stay the same, just delete the port from the requests. Usage should be the same - hopefully.
-
-
-## Known Bugs:
-Frontend doesn't display place nor description correctly.
