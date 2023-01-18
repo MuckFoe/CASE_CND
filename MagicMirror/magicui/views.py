@@ -42,7 +42,7 @@ def detail(request, event_id):
             'event_end_time': event['endTime'],
             'event_place': event['place'],
             'event_calender_name': event['calenderName'],
-            'event_description': event['place'],
+            'event_description': event['description'],
             'calender_color': calender['hexColor']
         }
     else:

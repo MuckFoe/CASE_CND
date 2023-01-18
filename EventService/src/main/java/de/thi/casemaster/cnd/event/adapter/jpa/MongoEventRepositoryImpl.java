@@ -27,6 +27,7 @@ public class MongoEventRepositoryImpl implements EventRepository {
         eventEntity.setEndTime(event.getEndTime());
         eventEntity.setStartTime(event.getStartTime());
         eventEntity.setCalenderName(event.getCalenderName());
+        eventEntity.setPlace(event.getPlace());
         mongoEventRepository.save(eventEntity);
 
     }
