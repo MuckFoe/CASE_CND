@@ -26,7 +26,7 @@ Such variables can be set using this [guide](https://www.twilio.com/blog/2017/01
 
 Finally the MagicMirror can be run using the following command
 
-`python manage.py runserver`
+`python manage.py runserver 0.0.0.0:8000`
 
 ### Run with Docker
 To run the WeatherService using Docker you first need to build the container using following command from the WeatherService directory:

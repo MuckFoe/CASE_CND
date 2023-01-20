@@ -23,7 +23,7 @@ The service itself needs to environment variables:
 Such variables can be set using this [guide](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html)
 To finally start the service run:
 
-`python __main__.py`
+`flask run`
 
 This will start the internal flask server which answers all incoming calls.
 ### Run with Docker
